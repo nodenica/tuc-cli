@@ -1,0 +1,41 @@
+{
+  "name": "tuc-cli",
+  "version": "1.0.0",
+  "description": "Cli tool for tuc",
+  "license": "MIT",
+  "repository": "nodenica/tuc-cli",
+  "author": {
+    "name": "Oscar Cortez",
+    "email": "hello@oscarmcm.com",
+    "url": "oscarmcm.com"
+  },
+  "bin": {
+    "tuc": "cli.js"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "keywords": [
+    "tuc",
+    "cli",
+    "cli-app",
+    "nicaragua"
+  ],
+  "dependencies": {
+    "tuc": "^0.0.11",
+    "meow": "^3.4.2"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
