@@ -28,15 +28,15 @@ function padDigits(number, digits) {
   return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
 }
 
+if (cli.input.length === 0) {
+  console.error('Please specify a tuc number');
+  process.exit(1);
+}
+
 if (cli.input[0].toString().length < 8) {
   cardnumber = padDigits(cli.input[0].toString(), 8);
 } else {
   cardnumber = cli.input[0].toString();
-}
-
-if (cli.input.length === 0) {
-  console.error('Please specify a tuc number');
-  process.exit(1);
 }
 
 if (cli.flags.t) {
@@ -48,4 +48,3 @@ if (cli.flags.t) {
 tuc.getBalance(cardnumber, function (balance) {
   console.log(balance);
 });
-
