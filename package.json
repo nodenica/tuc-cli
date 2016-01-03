@@ -1,7 +1,7 @@
 {
   "name": "tuc-cli",
   "version": "1.0.0",
-  "description": "Cli tool for tuc",
+  "description": "Get the remaining amount on your TUC card",
   "license": "MIT",
   "repository": "nodenica/tuc-cli",
   "author": {
