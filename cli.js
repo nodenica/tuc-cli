@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 const meow = require('meow');
-let Tuc = require('tuc');
+const Tuc = require('tuc');
 const tuc = new Tuc();
+var cardnumber = '';
 
 const cli = meow(`
   Usage
@@ -24,13 +25,13 @@ const cli = meow(`
 });
 
 function padDigits(number, digits) {
-    return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+  return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
 }
 
 if (cli.input[0].toString().length < 8) {
-  var card_number = padDigits(cli.input[0].toString(), 8);
+  cardnumber = padDigits(cli.input[0].toString(), 8);
 } else {
-  var card_number = cli.input[0].toString();
+  cardnumber = cli.input[0].toString();
 }
 
 if (cli.input.length === 0) {
@@ -39,12 +40,12 @@ if (cli.input.length === 0) {
 }
 
 if (cli.flags.t) {
-  tuc.getType(card_number, function(type){
+  tuc.getType(cardnumber, function (type) {
     console.log(type);
   });
 }
 
-tuc.getBalance(card_number, function(balance) {
-    console.log(balance);
+tuc.getBalance(cardnumber, function (balance) {
+  console.log(balance);
 });
 
