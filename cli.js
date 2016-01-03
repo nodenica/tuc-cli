@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const meow = require('meow');
-var Tuc = require('tuc');
+let Tuc = require('tuc');
 const tuc = new Tuc();
 
 const cli = meow(`
@@ -23,19 +23,28 @@ const cli = meow(`
   }
 });
 
+function padDigits(number, digits) {
+    return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+}
+
+if (cli.input[0].toString().length < 8) {
+  var card_number = padDigits(cli.input[0].toString(), 8);
+} else {
+  var card_number = cli.input[0].toString();
+}
+
 if (cli.input.length === 0) {
-  console.error('Please specify a package name');
+  console.error('Please specify a tuc number');
   process.exit(1);
 }
 
-if (cli.flags) {
-  tuc.getType(cli.input[0].toString(), function( type ){
+if (cli.flags.t) {
+  tuc.getType(card_number, function(type){
     console.log(type);
   });
-  process.exit(1);
 }
 
-tuc.getBalance(cli.input[0].toString(), function(balance) {
+tuc.getBalance(card_number, function(balance) {
     console.log(balance);
 });
 
